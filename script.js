@@ -4,7 +4,7 @@ const worldCupYear = document.getElementById("year");
 const headCoach = document.getElementById("head-coach");
 const playerCards = document.getElementById("player-cards");
 const playersDropdownList = document.getElementById("players");
-const myFavoriteFootballTeam = {
+const myFavoriteFootballTeam = {    //for data structure
   team: "Argentina",
   sport: "Football",
   year: 1986,
@@ -171,16 +171,16 @@ const myFavoriteFootballTeam = {
   ],
 };
 
-Object.freeze(myFavoriteFootballTeam);
-const { sport, team, year, players } = myFavoriteFootballTeam;
-const { coachName } = myFavoriteFootballTeam.headCoach;
+Object.freeze(myFavoriteFootballTeam);      //to ensure that you can't modify this object by adding or removing any properties
+const { sport, team, year, players } = myFavoriteFootballTeam;  //object deconstructuring
+const { coachName } = myFavoriteFootballTeam.headCoach;         //object deconstructuring
 
 typeOfSport.textContent = sport;
 teamName.textContent = team;
 worldCupYear.textContent = year;
 headCoach.textContent = coachName;
 
-const setPlayerCards = (arr = players) => {
+const setPlayerCards = (arr = players) => { //default
   playerCards.innerHTML += arr
     .map(
       ({ name, position, number, isCaptain, nickname }) =>
@@ -196,6 +196,7 @@ const setPlayerCards = (arr = players) => {
     .join("");
 };
 
+//will detect when a user makes a selection
 playersDropdownList.addEventListener("change", (e) => {
   playerCards.innerHTML = "";
 
